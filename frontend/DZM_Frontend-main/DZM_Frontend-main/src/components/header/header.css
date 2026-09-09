@@ -1,0 +1,87 @@
+#header-menu .ant-menu-item {
+    margin: -1px 20px 0 !important;
+    height: 80px !important;
+    padding-top: 34px !important;
+    background: #fdfdfd !important;
+    font-family: "PingFang SC" !important;
+    font-size: 16px !important;
+    color: #282828 !important;
+    letter-spacing: 0 !important;
+    font-weight: 400 !important;
+    line-height: 24px;
+}
+
+#header-menu .ant-menu-submenu-title {
+    height: 46px !important;
+}
+
+#header-menu .ant-menu-root {
+    height: 80px;
+    width: 100%;
+    box-shadow: 0 1px 5px 0 rgb(238 238 238);
+    z-index: 100;
+    top: 0;
+    position: fixed;
+    /*overflow-y: hidden;*/
+}
+
+#header-menu .ant-menu-submenu {
+    height: 80px !important;
+    padding-top: 34px !important;
+    font-family: "PingFang SC" !important;
+    font-size: 16px !important;
+    color: #282828 !important;
+    letter-spacing: 0 !important;
+    font-weight: 400 !important;
+    line-height: 24px;
+
+}
+
+#header-menu .profile-sub-menu {
+    float: right;
+    /*min-width: 150px;*/
+    text-align: center;
+}
+
+#header-menu {
+    height: 80px;
+    width: 100%;
+}
+.login-button {
+    float: right;
+    margin-top: 22px !important;
+    margin-right: 150px !important;
+}
+.login-button.ant-btn-primary {
+    color: black !important;
+    background: #fdfdfd !important;
+    border-color: #777e80 !important;
+}
+
+.ant-menu-item-only-child {
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center;
+}
+
+.ant-menu-vertical.ant-menu-sub,
+.ant-menu-vertical-left.ant-menu-sub,
+.ant-menu-vertical-right.ant-menu-sub {
+  min-width: 50px ;
+}
+.ant-menu-root.ant-menu-vertical,
+.ant-menu-root.ant-menu-vertical-left,
+.ant-menu-root.ant-menu-vertical-right,
+.ant-menu-root.ant-menu-inline {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.ant-table-wrapper {
+    background: white;
+}
+
+.ant-table-pagination.ant-pagination {
+    padding-right: 20px;
+}

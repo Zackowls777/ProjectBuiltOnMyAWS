@@ -1,0 +1,23 @@
+
+spring:
+  kafka:
+    producer:
+      retries: 0
+      batch-size: 30720000
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+    consumer:
+      group-id: dubbo-provider
+      enable-auto-commit: false
+      auto-commit-interval: 5000
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
+      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
+      max-poll-records: 2
+    listener:
+      missing-topics-fatal: false
+      type: single
+      ack-mode: manual_immediate
+    bootstrap-servers: 8.138.21.99:9092

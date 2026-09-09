@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  judge_server:
+    hostname: quant_server
+    image: dzm-quant-server:1.0.0
+    cap_drop:
+      - SETPCAP
+      - MKNOD
+      - NET_BIND_SERVICE
+      - SYS_CHROOT
+      - SETFCAP
+      - FSETID
+    volumes:
+      - $PWD/sandbox/tests/test_case:/test_case
+      - $PWD/sandbox/log:/log
+      - $PWD/sandbox/run:/judger
+      - $PWD/server:/code
+    environment:
+      - BACKEND_URL=http://backend:80/api/judge_server_heartbeat
+      - SERVICE_URL=http://judge-server:12358
+      - TOKEN=${TOKEN}
+      - DISABLE_HEARTBEAT=True
+      - TIINGO_KEY=${TIINGO_KEY}
+      - AWS_REGION_NAME=us-east-1
+      - AWS_S3_ACCESS_KEY_ID=${AWS_S3_ACCESS_KEY_ID}
+      - AWS_S3_SECRET_ACCESS_KEY=${AWS_S3_SECRET_ACCESS_KEY}
+      - AWS_S3_WQS_BUCKET=aws-s3-stockstore-new
+      - DEBUG=1
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    command: bash -c "cd /code; chmod +x entrypoint.sh; sh entrypoint.sh;"

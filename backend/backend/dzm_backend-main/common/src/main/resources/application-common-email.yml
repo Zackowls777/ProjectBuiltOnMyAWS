@@ -1,0 +1,7 @@
+spring:
+  mail:
+    host: smtp.163.com
+    username: m18810156815@163.com
+    password:  ${PASSWORD}
+    port: 465
+    protocol: smtps

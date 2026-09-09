@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.138.21.99:3306/dzm
+    username: root
+    password: ${PASSWORD}
+#
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://120.27.11.68:3306/dzm
+#    username: root
+#    password: ${PASSWORD}
+
+mybatis:
+  type-aliases-package: com.dzm.model
+  mapper-locations: classpath:mapper/*.xml

@@ -1,0 +1,4 @@
+
+spring:
+  profiles:
+    include: kafka,redis,zookeeper,mysql,email,jwt,password,s3,rabbit,quant

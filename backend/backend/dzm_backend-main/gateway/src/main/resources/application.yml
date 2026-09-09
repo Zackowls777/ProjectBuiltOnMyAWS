@@ -1,0 +1,15 @@
+spring:
+  config:
+    import: classpath:application-common.yml
+
+server:
+  port: 8000
+
+dubbo:
+  application:
+    name: dzm-controller
+    qos-enable: false
+  registry:
+    address: zookeeper://${zookeeper.address:localhost}:${zookeeper.port:2181}
+  consumer:
+    timeout: 5000

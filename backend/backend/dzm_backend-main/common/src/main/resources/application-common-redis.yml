@@ -1,0 +1,14 @@
+
+spring:
+  data:
+    redis:
+      host: 8.138.21.99
+      port: 6379
+      database: 0
+  redis:
+    redisson:
+      mode: single
+      address: redis://${spring.data.redis.host}:${spring.data.redis.port}
+      database: 0
+    connect-timeout: 5000
+    timeout: 5000

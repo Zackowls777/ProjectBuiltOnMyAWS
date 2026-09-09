@@ -1,0 +1,4 @@
+quant:
+  util:
+    server: 8.138.21.99:8080
+    token: ${TOKEN}

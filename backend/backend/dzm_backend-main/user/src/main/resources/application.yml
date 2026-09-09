@@ -1,0 +1,19 @@
+spring:
+  config:
+    import: classpath:application-common.yml
+
+user:
+  verify-code:
+    validity: 6000
+
+dubbo:
+  application:
+    name: dzm-user
+    qos-enable: false
+  registry:
+    address: zookeeper://${zookeeper.address:localhost}:${zookeeper.port:2181}
+  provider:
+    token: ${TOKEN}
+  protocol:
+    name: dubbo
+    port: 20883

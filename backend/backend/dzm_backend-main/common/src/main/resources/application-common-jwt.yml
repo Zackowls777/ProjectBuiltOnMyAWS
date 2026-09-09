@@ -1,0 +1,5 @@
+jwt:
+  util:
+    secret: ${SECRET}
+    expire-time: 259200
+    algorithm: HMAC256

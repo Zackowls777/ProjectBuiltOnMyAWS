@@ -1,0 +1,80 @@
+version: "3"
+services:
+
+
+  redis:
+    hostname: redis
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    volumes:
+      - $PWD/redis/data:/data
+
+  kafka:
+    image: apache/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    restart: always
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://8.138.21.99:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_NUM_PARTITIONS: 3
+
+  zookeeper:
+    image: zookeeper:3.8.4
+    restart: always
+    user: root
+    ports:
+      - "2181:2181"
+    expose:
+      - 2181
+      - 20880
+    volumes:
+      - $PWD/zookeeper/data:/data
+      - $PWD/zookeeper/datalog:/datalog
+  rabbitmq:
+    restart: always
+    image: rabbitmq:management
+    container_name: rabbitmq
+    hostname: rabbit
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_VHOST: /dzm
+      RABBITMQ_DEFAULT_USER: rabbit
+      RABBITMQ_DEFAULT_PASS: 123456
+    volumes:
+      - $PWD/rabbit/data:/var/lib/rabbitmq/mnesia
+      - $PWD/rabbit/log:/var/log
+
+  mysql:
+    hostname: mysql
+    restart: on-failure
+    image: mysql:8.0.25
+    container_name: mysql
+    ports:
+      - 3306:3306
+    expose:
+      - "3306"
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - $PWD/mysql/conf:/etc/mysql/conf.d
+      - $PWD/mysql/logs:/var/log/mysql
+      - $PWD/mysql/data:/var/lib/mysql
+      - $PWD/mysql/files:/var/lib/mysql-files

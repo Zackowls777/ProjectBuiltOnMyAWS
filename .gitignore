@@ -1,0 +1,21 @@
+# Videos and credentials
+video.mp4
+*.pem
+*.key
+*.p12
+*.pfx
+*accessKeys.csv
+.env
+.env.*
+!.env.example
+# Dependencies, generated files and local copies
+node_modules/
+target/
+__pycache__/
+*.pyc
+.idea/
+*.log
+*.zip
+_compare/
+.github-upload/
+autom4te.cache/

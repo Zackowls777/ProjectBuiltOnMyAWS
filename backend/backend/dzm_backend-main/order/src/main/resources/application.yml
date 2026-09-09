@@ -1,0 +1,34 @@
+
+spring:
+  config:
+    import: classpath:application-common.yml
+
+dubbo:
+  application:
+    name: dzm-order
+    qos-enable: false
+  registry:
+    address: zookeeper://${zookeeper.address:localhost}:${zookeeper.port:2181}
+  provider:
+    token: ${TOKEN}
+  protocol:
+    name: dubbo
+    port: 20881
+
+
+
+
+
+order:
+  time-to-live-seconds: 300
+
+payment:
+  paypal:
+    mode: sandbox
+    client:
+      app: ARCiXdf1VxdOsNkXgYx5oeyIPhwMwlgNzbgZwMB5Yg-Bp-x3ahoybbeVK5q4PMrOP5TJKotBq7OoLs_Q
+      secret: ${SECRET}
+    default-cancel-url: http://127.0.0.1:8000/payment/paypal/cancel
+    default-success-url: http://127.0.0.1:8000/payment/paypal/execute
+
+
